@@ -1,0 +1,10 @@
+{
+	"configurations": [
+		{
+			"command": "yarn install && yarn start",
+			"name": "React start",
+			"request": "launch",
+			"type": "node-terminal"
+		}
+	]
+}
