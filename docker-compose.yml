@@ -3,9 +3,12 @@ services:
   mongo:
     image: mongo
     restart: always
+    volumes:
+      - ./docker/mongodb/init:/docker-entrypoint-initdb.d
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: book_room
     ports:
       - "27017:27017"
   mongo-express:
