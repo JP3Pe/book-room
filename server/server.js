@@ -8,13 +8,13 @@ const express = require('express'),
     session = require('express-session'),
     MongoStore = require('connect-mongo')(session);
 
-const config = require('./server/config');
+const config = require('./config');
 
 const port = process.env.PORT || 8008;
 const app = express();
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://root:example@localhost:27017/', error => {
+mongoose.connect('mongodb://root:example@localhost:27017', error => {
         if (error) throw error;
     }
 );
@@ -41,17 +41,17 @@ app.use((req, res, next) => {
 
 app.get('/', (req, res) => res.send('Welcome to the "BOOK ROOM" API'));
 
-require('./server/passport/local')(passport);
+require('./passport/local')(passport);
 
-require('./server/authRouter')(app, passport);
+require('./authRouter')(app, passport);
 
-const roomRouter = require('./server/roomRouter');
+const roomRouter = require('./roomRouter');
 app.use('/api/rooms', roomRouter);
 
-const meetingRouter = require('./server/meetingRouter');
+const meetingRouter = require('./meetingRouter');
 app.use('/api/meetings', meetingRouter);
 
-const bookingRouter = require('./server/bookingRouter');
+const bookingRouter = require('./bookingRouter');
 app.use('/api/bookings', bookingRouter);
 
 app.listen(port, () => console.log(`Server running on PORT: ${port}`));
