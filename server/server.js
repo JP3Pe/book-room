@@ -14,7 +14,7 @@ const port = process.env.PORT || 8008;
 const app = express();
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://root:example@localhost:27017', error => {
+mongoose.connect('mongodb://root:example@host.docker.inernal:27017', error => {
         if (error) throw error;
     }
 );
@@ -54,4 +54,4 @@ app.use('/api/meetings', meetingRouter);
 const bookingRouter = require('./bookingRouter');
 app.use('/api/bookings', bookingRouter);
 
-app.listen(port, () => console.log(`Server running on PORT: ${port}`));
+app.listen(port, '0.0.0.0', () => console.log(`Server running on PORT: ${port}`));

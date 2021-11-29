@@ -22,3 +22,22 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
       ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+  react:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: jp3pe/plane/react
+    container_name: plane-react
+    ports:
+      - "8007:8007"
+  node:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    depends_on:
+      - mongo
+      - mongo-express
+    image: jp3pe/plane/node
+    container_name: plane-node
+    ports:
+      - "8008:8008"

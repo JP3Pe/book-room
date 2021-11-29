@@ -4,7 +4,7 @@
   "description": "Manage room usage via a simple multi-platform app",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline --open",
+    "start": "webpack-dev-server --hot --inline",
     "build": "webpack -p --progress --colors",
     "test:watch": "jest --watch",
     "coverage": "jest --coverage"

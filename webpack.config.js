@@ -61,13 +61,15 @@ module.exports = {
     }),
   ],
   devServer: {
+    host: '0.0.0.0',
     port: 8007,
     historyApiFallback: true,
     stats: 'errors-only',
     overlay: true,
+    // disableHostCheck: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:8008/',
+        target: 'http://host.docker.internal:8008/',
         secure: false
       }
     }
