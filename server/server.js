@@ -14,7 +14,7 @@ const port = process.env.PORT || 8008;
 const app = express();
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://root:example@host.docker.inernal:27017', error => {
+mongoose.connect('mongodb://root:example@mongo:27017', error => {
         if (error) throw error;
     }
 );

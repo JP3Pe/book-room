@@ -5,6 +5,7 @@ services:
     restart: always
     volumes:
       - ./docker/mongodb/init:/docker-entrypoint-initdb.d
+      - ./docker/mongodb/db:/data/db
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
