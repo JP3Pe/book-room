@@ -2,6 +2,7 @@ version: "3.8"
 services:
   mongo:
     image: mongo
+    container_name: plane-mongo
     volumes:
       - ./docker/mongodb/init:/docker-entrypoint-initdb.d
       - ./docker/mongodb/db:/data/db
@@ -15,6 +16,7 @@ services:
     depends_on:
       - mongo
     image: mongo-express
+    container_name: plane-mongo-express
     restart: always
     ports:
       - "8081:8081"
